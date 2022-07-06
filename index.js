@@ -3,9 +3,9 @@ const app = express();
 const mongoose = require("mongoose");
 const dotenv = require("dotenv").config();
 const cookie_parser = require("cookie-parser");
-const authRoute = require("./api/routes/auth");
-const userRoute = require("./api/routes/users");
-const noteRoute = require("./api/routes/notes");
+const authRoute = require("./routes/auth");
+const userRoute = require("./routes/users");
+const noteRoute = require("./routes/notes");
 const cors = require("cors");
 
 mongoose
@@ -23,6 +23,6 @@ app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/note", noteRoute);
-app.listen(process.env.port || 5000 , () => {
+app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is now running");
 });
