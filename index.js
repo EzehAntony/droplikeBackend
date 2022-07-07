@@ -20,7 +20,7 @@ mongoose
 app.use(
   cors({
     credentials: true,
-    origin: "https://git.heroku.com/crayonnejotter.git",
+    origin: "*",
   })
 );
 app.use(cookie_parser());
