@@ -20,7 +20,7 @@ const createNote = async (req, res) => {
 /* Update */
 const updateNote = async (req, res) => {
   try {
-    const oneNote = await Notes.findOneAndUpdate(
+    const oneNote = await Notes.findByIdAndUpdate(
       req.query.note,
       { $set: req.body },
       { new: true }
@@ -35,11 +35,7 @@ const updateNote = async (req, res) => {
 const deleteNote = async (req, res) => {
   try {
     await Notes.findByIdAndDelete(req.query.note);
-    res
-      .status(200)
-      .json(
-        "Note Deleted"
-      );
+    res.status(200).json("Note Deleted");
   } catch (err) {
     res.status(500).json(err);
   }
