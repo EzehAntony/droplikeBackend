@@ -17,7 +17,12 @@ mongoose
     console.log(err);
   });
 
-app.use(cors({ credentials: true, origin: "http://localhost:3000" }));
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://git.heroku.com/crayonnejotter.git",
+  })
+);
 app.use(cookie_parser());
 app.use(express.json());
 app.use("/api/auth", authRoute);
