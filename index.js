@@ -17,12 +17,20 @@ mongoose
     console.log(err);
   });
 
-app.use((req,res, next) => {
+app.use((req, res, next) => {
   res.header("Allow-control-Allow-Origin", "*");
-  res.header("Allow-Control-Allow-Headers", "origin, X-Requested-With, Content-Type, Accept");
-  next()
-})
-app.use(cors({ credentials: true, origin: "https://git.heroku.com/crayonnejotter.git" }));
+  res.header(
+    "Allow-Control-Allow-Headers",
+    "origin, X-Requested-With, Content-Type, Accept"
+  );
+  next();
+});
+app.use(
+  cors({
+    credentials: true,
+    origin: "https://git.heroku.com/crayonnejotter.git",
+  })
+);
 app.use(cookie_parser());
 app.use(express.json());
 app.use("/api/auth", authRoute);
