@@ -1,4 +1,3 @@
-const { findByIdAndDelete } = require("../models/Users");
 const Users = require("../models/Users");
 
 /* Update */
