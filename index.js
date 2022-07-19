@@ -28,7 +28,7 @@ app.use((req, res, next) => {
 app.use(
   cors({
     credentials: true,
-    origin: "https://git.heroku.com/crayonnejotter.git",
+    origin: "https://git.heroku.com/crayonnejotter.git", "http://localhost:3000"
   })
 );
 app.use(cookie_parser());
