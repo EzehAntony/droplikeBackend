@@ -26,7 +26,10 @@ const login = async (req, res) => {
       return res.status(403).json("No such user in the database");
     }
 
-    const isPassword = await bcryptjs.compare(req.body.password, oneUser.password);
+    const isPassword = await bcryptjs.compare(
+      req.body.password,
+      oneUser.password
+    );
 
     if (!isPassword) {
       return res.status(500).json("Password is incorrect");

@@ -5,7 +5,7 @@ const dotenv = require("dotenv").config();
 const cookie_parser = require("cookie-parser");
 const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
-const noteRoute = require("./routes/notes");
+const postRoute = require("./routes/posts");
 const cors = require("cors");
 
 mongoose
@@ -25,17 +25,22 @@ app.use((req, res, next) => {
   );
   next();
 });
+
 app.use(
   cors({
     credentials: true,
-    origin: "https://git.heroku.com/crayonnejotter.git", "http://localhost:3000"
+    origin: [
+      "https://git.heroku.com/crayonnejotter.git",
+      "http://localhost:3000",
+    ],
+    sameSite: "none",
   })
 );
 app.use(cookie_parser());
 app.use(express.json());
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
-app.use("/api/note", noteRoute);
+app.use("/api/post", postRoute);
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is now running");
 });
