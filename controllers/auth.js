@@ -3,7 +3,7 @@ const Users = require("../models/Users");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-  const name = await Users.find({ username: req.body.username });
+  const name = await Users.findOne({ username: req.body.username });
   if (!name) {
     try {
       const salt = bcryptjs.genSaltSync(10);
