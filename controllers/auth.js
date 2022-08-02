@@ -22,7 +22,7 @@ const register = async (req, res) => {
       res.status(500).json(err);
     }
   } else {
-    res
+    return res
       .status(401)
       .json("A user already has this username, try something else.");
   }
