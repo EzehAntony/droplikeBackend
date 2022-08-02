@@ -8,6 +8,8 @@ const register = async (req, res) => {
     const hash = bcryptjs.hashSync(req.body.password, salt);
 
     const newUser = new Users({
+      firstname: req.body.firstname,
+      lastname: req.body.lastname,
       username: req.body.username,
       password: hash,
     });

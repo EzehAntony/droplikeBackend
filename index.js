@@ -30,7 +30,6 @@ app.use(
   cors({
     credentials: true,
     origin: [
-      "https://git.heroku.com/crayonnejotter.git",
       "http://localhost:3000",
       "http://droplike.herokuapp.com",
     ],
