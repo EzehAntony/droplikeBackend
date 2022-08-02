@@ -3,21 +3,28 @@ const Users = require("../models/Users");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
-  try {
-    const salt = bcryptjs.genSaltSync(10);
-    const hash = bcryptjs.hashSync(req.body.password, salt);
+  const name = await Users.find({ username: req.body.username });
+  if (!name) {
+    try {
+      const salt = bcryptjs.genSaltSync(10);
+      const hash = bcryptjs.hashSync(req.body.password, salt);
 
-    const newUser = new Users({
-      firstname: req.body.firstname,
-      lastname: req.body.lastname,
-      username: req.body.username,
-      password: hash,
-    });
+      const newUser = new Users({
+        firstname: req.body.firstname,
+        lastname: req.body.lastname,
+        username: req.body.username,
+        password: hash,
+      });
 
-    const savedUser = await newUser.save();
-    res.status(200).json(savedUser);
-  } catch (err) {
-    res.status(500).json(err);
+      const savedUser = await newUser.save();
+      res.status(200).json(savedUser);
+    } catch (err) {
+      res.status(500).json(err);
+    }
+  } else {
+    res
+      .status(401)
+      .json("A user already has this username, try something else.");
   }
 };
 
