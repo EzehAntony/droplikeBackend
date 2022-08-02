@@ -32,6 +32,7 @@ app.use(
     origin: [
       "https://git.heroku.com/crayonnejotter.git",
       "http://localhost:3000",
+      "http://droplike.herokuapp.com",
     ],
     sameSite: "none",
   })
