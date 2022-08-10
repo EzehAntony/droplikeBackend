@@ -1,5 +1,5 @@
-const e = require("express");
 const posts = require("../models/Posts");
+const users = require("../models/Users");
 
 //create post
 const createPost = async (req, res) => {
@@ -94,11 +94,23 @@ const getPost = async (req, res) => {
 
 const getAll = async (req, res) => {
   try {
-    const post = await posts.find({ userId: req.body.userId });
-    res.status(200).json(post)
+    const post = await posts.find({ userId: req.params.id });
+    res.status(200).json(post);
   } catch (error) {
     res.status(500).json(error);
   }
+};
+
+const timeline = async (req, res) => {
+  const currentUser = await users.findById(req.params.id);
+  const currentUserPost = await posts.find({ userId: currentUser._id });
+  const friendsPost = await Promise.all(
+    currentUser.followings.map((f) => {
+      posts.find({ userId: f.userId });
+    })
+  );
+
+  res.status(200).json(currentUserPost.concat(...friendsPost));
 };
 
 module.exports = {
@@ -108,5 +120,6 @@ module.exports = {
   likePost,
   commentPost,
   getPost,
-  getAll
+  getAll,
+  timeline
 };

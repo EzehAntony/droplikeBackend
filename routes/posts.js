@@ -7,7 +7,8 @@ const {
   likePost,
   commentPost,
   getPost,
-  getAll
+  getAll,
+  timeline,
 } = require("../controllers/posts");
 
 //create post
@@ -28,6 +29,9 @@ router.put("/comment/:id", commentPost);
 router.get("/get/:id", getPost);
 
 //get all user post
-router.get("/get/", getAll);
+router.get("/get/:id", getAll);
+
+//get timeline post
+router.get("/timeline/:id", timeline);
 
 module.exports = router;

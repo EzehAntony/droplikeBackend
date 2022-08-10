@@ -5,6 +5,7 @@ const {
   oneUser,
   allUsers,
   followUser,
+  unfollowUser,
 } = require("../controllers/users");
 
 const { verifyUser, verifyAdmin } = require("../utilities/verifyToken");
@@ -12,7 +13,8 @@ const { verifyUser, verifyAdmin } = require("../utilities/verifyToken");
 router.put("/update/:id", verifyUser, updateUser);
 router.delete("/delete/:id", verifyUser, deleteUser);
 router.get("/get/:id", verifyUser, oneUser);
-router.get("/admin", verifyAdmin, allUsers);
+router.get("/all", verifyUser, allUsers);
 router.put("/follow/:id", verifyUser, followUser);
+router.put("/follow/:id", verifyUser, unfollowUser);
 
 module.exports = router;

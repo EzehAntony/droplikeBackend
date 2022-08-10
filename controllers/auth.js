@@ -22,9 +22,7 @@ const register = async (req, res) => {
       res.status(500).json(err);
     }
   } else {
-    return res
-      .status(401)
-      .json("A user already has this username, try something else.");
+    return res.status(401).json("Username already exits");
   }
 };
 
@@ -32,7 +30,7 @@ const login = async (req, res) => {
   try {
     const oneUser = await Users.findOne({ username: req.body.username });
     if (!oneUser) {
-      return res.status(403).json("No such user in the database");
+      return res.status(403).json("Username does not exist");
     }
 
     const isPassword = await bcryptjs.compare(
