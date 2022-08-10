@@ -109,7 +109,6 @@ const timeline = async (req, res) => {
       posts.find({ userId: f.userId });
     })
   );
-
   res.status(200).json(currentUserPost.concat(...friendsPost));
 };
 
