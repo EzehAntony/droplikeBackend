@@ -12,7 +12,7 @@ const { verifyUser, verifyAdmin } = require("../utilities/verifyToken");
 
 router.put("/update/:id", verifyUser, updateUser);
 router.delete("/delete/:id", verifyUser, deleteUser);
-router.get("/get/:id", verifyUser, oneUser);
+router.get("/get/:id", oneUser);
 router.get("/all/:id", verifyUser, allUsers);
 router.put("/follow/:id", verifyUser, followUser);
 router.put("/follow/:id", verifyUser, unfollowUser);
