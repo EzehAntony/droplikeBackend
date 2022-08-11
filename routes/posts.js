@@ -29,7 +29,7 @@ router.put("/comment/:id", commentPost);
 router.get("/get/:id", getPost);
 
 //get all user post
-router.get("/get/:id", getAll);
+router.get("/get/all/:id", getAll);
 
 //get timeline post
 router.get("/timeline/:id", timeline);
