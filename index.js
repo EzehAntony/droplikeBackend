@@ -32,6 +32,7 @@ app.use(
     origin: [
       "http://localhost:3000",
       "http://droplike.herokuapp.com",
+      "https://droplikebackend.herokuapp.com",
     ],
     sameSite: "none",
   })
