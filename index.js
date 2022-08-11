@@ -8,6 +8,9 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const cors = require("cors");
 
+app.use(cookie_parser());
+app.use(express.json());
+app.set("trust proxy", 1);
 mongoose
   .connect(process.env.url)
   .then(() => {
@@ -17,15 +20,6 @@ mongoose
     console.log(err);
   });
 
-app.use((req, res, next) => {
-  res.header("Allow-control-Allow-Origin", "*");
-  res.header(
-    "Allow-Control-Allow-Headers",
-    "origin, X-Requested-With, Content-Type, Accept"
-  );
-  next();
-});
-
 app.use(
   cors({
     credentials: true,
@@ -34,14 +28,13 @@ app.use(
       "http://droplike.herokuapp.com",
       "https://droplikebackend.herokuapp.com",
     ],
-    sameSite: "none",
   })
 );
-app.use(cookie_parser());
-app.use(express.json());
+
 app.use("/api/auth", authRoute);
 app.use("/api/user", userRoute);
 app.use("/api/post", postRoute);
+
 app.listen(process.env.PORT || 5000, () => {
   console.log("Backend server is now running");
 });
