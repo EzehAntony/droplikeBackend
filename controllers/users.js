@@ -52,7 +52,7 @@ const deleteUser = async (req, res) => {
 /* Get single */
 const oneUser = async (req, res) => {
   try {
-    const oneUser = await Users.findById(req.params.id);
+    const oneUser = await Users.findById(req.body.userId);
     const { password, isAdmin, ...others } = oneUser._doc;
     res.status(200).json({ ...others });
   } catch (err) {
