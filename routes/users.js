@@ -15,6 +15,6 @@ router.delete("/delete/:id", verifyUser, deleteUser);
 router.post("/get/:id", verifyUser, oneUser);
 router.get("/all/:id", verifyUser, allUsers);
 router.put("/follow/:id", verifyUser, followUser);
-router.put("/follow/:id", verifyUser, unfollowUser);
+router.put("/unfollow/:id", verifyUser, unfollowUser);
 
 module.exports = router;

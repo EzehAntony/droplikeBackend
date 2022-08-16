@@ -52,7 +52,7 @@ const likePost = async (req, res) => {
   try {
     const post = await posts.findById(req.params.id);
     if (post.likes.includes(req.body.userId)) {
-      const like = await post.updateOne({
+      await post.updateOne({
         $pull: { likes: req.body.userId },
       });
       res.status(200).json("unliked");
