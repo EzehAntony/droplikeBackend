@@ -106,7 +106,7 @@ const timeline = async (req, res) => {
   const currentUserPost = await posts.find({ userId: currentUser._id });
   const friendsPost = await Promise.all(
     currentUser.followings.map((f) => {
-      posts.find({ userId: f._id });
+      posts.find({ userId: f });
     })
   );
   res.status(200).json(currentUserPost.concat(...friendsPost));
