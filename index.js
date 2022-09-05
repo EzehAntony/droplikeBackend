@@ -25,7 +25,7 @@ app.use(
     credentials: true,
     origin: [
       "http://localhost:3000",
-      "droplike.netlify.app",
+      "https://droplike.netlify.app",
       "http://droplike.herokuapp.com",
       "https://droplikebackend.herokuapp.com",
     ],
