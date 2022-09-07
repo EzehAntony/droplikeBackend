@@ -53,9 +53,9 @@ const login = async (req, res) => {
     const { password, ...others } = oneUser._doc;
     res
       .cookie("access_token", token, {
-        httpOnly: true,
+        /*         httpOnly: true,
         sameSite: "none",
-        secure: true,
+        secure: true, */
       })
       .status(200)
       .json({ ...others });
