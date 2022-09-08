@@ -13,6 +13,7 @@ const register = async (req, res) => {
         firstname: req.body.firstname,
         lastname: req.body.lastname,
         username: req.body.username,
+        gender: req.body.gender,
         password: hash,
       });
 
