@@ -104,14 +104,18 @@ const getAll = async (req, res) => {
 const timeline = async (req, res) => {
   const currentUser = await users.findById(req.params.id);
   const currentUserPost = await posts.find({ userId: currentUser._id });
+
   const friendsPost = await Promise.all(
     currentUser.followings.map((f) => {
-      posts.find({ userId: f }).sort({ _id: -1 });
-      const finalpost = currentUserPost.concat(...friendsPost);
-      const fp = finalpost.sort({ _id: -1 });
-      return fp;
+      return posts.find({ userId: f });
     })
   );
+
+  const finalpost = currentUserPost.concat(...friendsPost);
+  const fp = finalpost.sort((a, b) => {
+    return b.createdAt - a.createdAt;
+  });
+
   res.status(200).json(fp);
 };
 
