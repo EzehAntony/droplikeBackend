@@ -106,17 +106,13 @@ const timeline = async (req, res) => {
   const currentUserPost = await posts.find({ userId: currentUser._id });
   const friendsPost = await Promise.all(
     currentUser.followings.map((f) => {
-      posts
-        .find({ userId: f })
-        .sort({ createdAt: -1 })
-        .toArray((err, result) => {
-          return result;
-        });
+      posts.find({ userId: f }).sort({ _id: -1 });
+      const finalpost = currentUserPost.concat(...friendsPost);
+      const fp = finalpost.sort({ _id: -1 });
+      return fp;
     })
   );
-  res
-    .status(200)
-    .json(currentUserPost.concat(...friendsPost).sort({ createdAt: 1 }));
+  res.status(200).json(fp);
 };
 
 module.exports = {
