@@ -72,7 +72,7 @@ const commentPost = async (req, res) => {
   try {
     const post = await posts.findById(req.params.id);
     const comment = await post.updateOne({
-      $push: { comments: req.body.userId },
+      $push: { comments: req.body.comment },
     });
     res.status(200).json("commented");
   } catch (error) {
