@@ -28,6 +28,8 @@ app.use(
       "https://droplike.netlify.app",
       "http://droplike.herokuapp.com",
       "https://droplikebackend.herokuapp.com",
+      "https://droplike.vercel.app",
+      "https://droplike-crayonne.vercel.app"
     ],
   })
 );
