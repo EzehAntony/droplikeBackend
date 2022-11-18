@@ -70,10 +70,17 @@ const likePost = async (req, res) => {
 //comment on post
 const commentPost = async (req, res) => {
     try {
-        const post = await posts.findById(req.params.id);
-        const comment = await post.updateOne({
-            $push: { commenterId: req.body.userId, comment: req.body.comment },
-        });
+        await posts.updateOne(
+            { _id: req.params.id },
+            {
+                $push: {
+                    comment: {
+                        userId: req.body.userId,
+                        comment: req.body.comment,
+                    },
+                },
+            }
+        );
         res.status(200).json("commented on post");
     } catch (error) {
         res.status(500).json(error);
