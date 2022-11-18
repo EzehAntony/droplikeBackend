@@ -3,6 +3,7 @@ const Users = require("../models/Users");
 const jwt = require("jsonwebtoken");
 
 const register = async (req, res) => {
+  console.log(req.body)
     const name = await Users.findOne({ username: req.body.username });
     if (!name) {
         try {
