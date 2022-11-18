@@ -10,7 +10,6 @@ const cors = require("cors");
 
 app.use(cookie_parser());
 app.use(express.json());
-app.set("trust proxy", 1);
 mongoose
     .connect(process.env.url)
     .then(() => {
