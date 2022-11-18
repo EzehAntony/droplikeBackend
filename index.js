@@ -23,7 +23,15 @@ mongoose
 app.use(
     cors({
         credentials: true,
-        origin: "*",
+        origin: [
+            "http://localhost:3000",
+            "https://droplike.netlify.app",
+            "http://droplike.herokuapp.com",
+            "https://droplikebackend.herokuapp.com",
+            "https://droplike.vercel.app",
+            "https://droplike-crayonne.vercel.app",
+            "https://cloudinary.com",
+        ],
     })
 );
 
