@@ -74,7 +74,7 @@ const commentPost = async (req, res) => {
             { _id: req.params.id },
             {
                 $push: {
-                    comment: {
+                    comments: {
                         userId: req.body.userId,
                         comment: req.body.comment,
                     },
