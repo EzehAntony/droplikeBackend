@@ -1,13 +1,3 @@
-const router = require("express").Router();
-const {
-  updateUser,
-  deleteUser,
-  oneUser,
-  allUsers,
-  followUser,
-  unfollowUser,
-} = require("../controllers/users");
-
 const { verifyUser, verifyAdmin } = require("../utilities/verifyToken");
 
 router.put("/update/:id", verifyUser, updateUser);
